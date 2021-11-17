@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+/* CSS de margens gerados pelo gridlover com line height 1,2 e scale factor 1,25  e adaptado por mim*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  /*margin: 0rem 9.375rem 0rem 9.375rem;*/
+  background-repeat: no-repeat;
+  background-size: 65%;
+  background-color: #f1f1f1;
+  padding: 0;
+  font-size: 1rem;
+  color: #44494f;
+}
+h1,
+.h1 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+  margin-top: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+h2,
+.h2 {
+  font-size: 1.4375rem;
+  line-height: 2.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+h3,
+.h3 {
+  font-size: 1.1875rem;
+  line-height: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0rem;
+}
+h4,
+.h4 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0rem;
+}
+h5,
+.h5 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0rem;
+}
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
+  margin-top: 0rem;
+  margin-bottom: 1.25rem;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+/* Let's make sure all's aligned */
+hr,
+.hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+a,
+b,
+i,
+strong,
+em,
+small,
+code {
+  line-height: 0;
+}
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+li,
+a,
+button {
+  text-decoration: none;
+  color: #ffffff;
+}
+ul {
+  padding-top: 24px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.nav__links {
+  list-style: none;
+}
+.nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+.nav__links a {
+  transition: all 0.3s ease 0s;
+  color: #44494f;
+}
+.nav__links a:hover {
+  color: #2c7aed;
+}
+.logo {
+  color: #ffffff;
+  font-weight: bold;
+}
+.btn__criar {
+  margin-right: 9.375rem;
+  padding: 24px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-style: none;
+  background-color: #2c7aed;
+  border-radius: 8px;
+}
+.btn__criar:hover {
+  background: linear-gradient(90deg, #2c7aed 2.3%, #4bc3cc 100%);
+}
+
+.secondary__items img {
+  display: block;
+  text-orientation: sideways;
+  height: 150px;
+}
+.logo {
+  margin-right: auto;
+  margin-left: 9.375rem;
+  color: #2c7aed;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.header__nav {
+  margin-right: 4rem;
+  background-color: #ffffff;
+  align-items: center;
+}
+header {
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}
+.div__nav {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.principal {
+  align-items: center;
+}
+.containerAnotacoes {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 16px;
+  margin-left: 9rem;
+  margin-right: 9rem;
+}
+.threeDots {
+  color: #44494f;
+}
+.div__livros {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+.img__livro {
+  width: 120px;
+  height: 180px;
+}
+.div__pesquisa {
+  display: flex;
+  flex-direction: column;
+}
+.btn__livro {
+  width: 48px;
+  height: 38px;
+  border-radius: 0px 4px 4px 0px;
+  margin-bottom: 16px;
+}
+.input__livro {
+  border-radius: 4px 0px 0px 4px;
+  width: 25rem;
+  margin-bottom: 16px;
+}
+.livro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  border-radius: 4px;
+  margin: 4px;
+}
+.livro:hover {
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.container__Livros {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 16px;
+  margin-left: 9rem;
+  margin-right: 9rem;
+}
+.divTituloEbtn {
+  display: flex;
+}
+.trash__icon {
+  margin-top: -3px;
+  margin-left: 5px;
+}
+
+.div__marcacao {
+    width: 30%;
+    height: 5px;
+    border-radius: 16px;
+    margin-top: -12px;
+    margin-bottom: 8px;
+}
+.data__hora{
+    margin: 0px;
+    align-self: "flex-start";
+    font-size: 14px;
+    font-weight: "normal";
+}
+.drop{
+  padding: 16px;
+}

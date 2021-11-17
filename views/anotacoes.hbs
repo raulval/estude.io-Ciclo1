@@ -1,0 +1,245 @@
+  <head>
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+     <script>
+      window.onload = function () {
+        var botaoCriarAnotacao = document.querySelector("#botaoCriarAnotacao");
+        var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+        var alterar = 0;
+        var divParaAlterar = 0;
+
+        botaoCriarAnotacao.addEventListener("click", () => {
+          alterar = 0;
+          myModal.toggle();
+        });
+
+        function criarAnotacao(titulo, texto) {
+          //Div da anotação
+          var divNode = document.createElement("div");
+          divNode.classList.add("card");
+          divNode.classList.add("card-body");
+          divNode.style.margin = "8px";
+          divNode.style.boxShadow = "0px 4px 4px rgba(0, 0, 0, 0.25)";
+          divNode.style.maxWidth = "30%";
+
+          //Div para colocar titulo e o botao de editar na horizontal
+          var divNode2 = document.createElement("div");
+          divNode2.style.display = "flex";
+          divNode2.style.justifyContent = "flex-start";
+          divNode2.style.alignItems = "center";
+
+          //Titulo da anotação
+          if (!titulo) {
+            var tituloAnotacao = document.querySelector("#tituloAnotacao").value;
+          } else {
+            tituloAnotacao = titulo;
+          }
+          // h5 para o titulo
+          var tituloNode = document.createElement("h5");
+          tituloNode.style.marginTop = "0px";
+          tituloNode.classList.add("card-title");
+          tituloNode.style.fontWeight = "bold";
+          tituloNode.innerHTML = tituloAnotacao;
+
+          //botão para os 3 pontos 
+          var btn = document.createElement("button");
+          btn.classList.add("btn");
+          btn.setAttribute("id", "dropdownMenuButton1");
+          btn.setAttribute("data-bs-toggle", "dropdown");
+          btn.setAttribute("aria-expanded", "false");
+          btn.style.marginLeft = "auto";
+
+          //Imagem dos 3 pontos
+          var dotsImg = document.createElement("img");
+          dotsImg.classList.add("threeDots");
+          dotsImg.setAttribute("src", "../icons/three_dots.svg");
+          btn.appendChild(dotsImg);
+
+          //ul
+          ul = document.createElement("ul");
+          ul.classList.add("dropdown-menu");
+          ul.setAttribute("aria-labelledby", "dropdownMenuButton1");
+
+          li1 = document.createElement("li");
+          li1.classList.add("dropdown-item");
+          li1.innerHTML = "Editar";
+
+          li2 = document.createElement("li");
+          li2.classList.add("dropdown-item");
+          li2.innerHTML = "Excluir";
+
+          ul.appendChild(li1);
+          ul.appendChild(li2);
+
+          //Descrição
+          var textoAnotacao;
+          if (!texto) {
+            textoAnotacao = document.querySelector("#textoAnotacao").value;
+          } else {
+            textoAnotacao = texto;
+          }
+
+          textoNode = document.createElement("p");
+          textoNode.innerHTML = textoAnotacao;
+          textoNode.classList.add("card-text");
+
+          divNode2.appendChild(tituloNode);
+          divNode2.appendChild(btn);
+          divNode2.appendChild(ul);
+          divNode.appendChild(divNode2);
+          divNode.appendChild(textoNode);
+          
+          //adicionar a anotação na div
+          var containerAnotacoes = document.querySelector("#containerAnotacoes");
+          containerAnotacoes.insertAdjacentElement("beforeend", divNode);
+
+          //Remove a anotação
+          li2.addEventListener(
+            "click",
+            () => {
+              console.log(divNode.innerText);
+              divNode.remove();
+            },
+            false
+          );
+
+          function editar() {
+            var div = this.parentNode.parentNode.parentNode;
+            nodes = div.childNodes;
+            var divTitulo = nodes[0];
+            var tituloNode = divTitulo.childNodes[0];
+
+            var tituloTexto = tituloNode.innerHTML;
+            var descricaoTexto = nodes[1].innerHTML;
+
+            myModal.toggle();
+            document.querySelector("#tituloAnotacao").value = tituloTexto;
+            document.querySelector("#textoAnotacao").value = descricaoTexto;
+
+            divParaAlterar = div;
+            alterar = 1;
+          }
+          li1.addEventListener("click", editar, false);
+        }
+
+        var botaoDescartar = document.querySelector("#btnDescartar");
+        botaoDescartar.addEventListener("click", () => {
+          document.querySelector("#tituloAnotacao").value = "";
+          document.querySelector("#textoAnotacao").value = "";
+        });
+        
+        var botaoSalvarAnotacao = document.querySelector("#salvarAnotacao");
+
+        function salvarAnotacao() {
+          if (alterar == 1) {
+            console.log(divParaAlterar);
+
+            nodes = divParaAlterar.childNodes;
+            console.log(nodes);
+
+            var divTitulo = nodes[0];
+            console.log(divTitulo);
+            var tituloNode = divTitulo.childNodes[0];
+
+            tituloNode.innerHTML =
+              document.querySelector("#tituloAnotacao").value;
+            nodes[1].innerHTML = document.querySelector("#textoAnotacao").value;
+            document.querySelector("#tituloAnotacao").value = "";
+            document.querySelector("#textoAnotacao").value = "";
+            myModal.toggle();
+          } else {
+            if (
+              textoAnotacao.value.length < 5 ||
+              tituloAnotacao.value.length < 5
+            ) {
+              alert("Por favor, insira um titulo e uma incrível descrição :)");
+            } else {
+              criarAnotacao();
+              document.querySelector("#tituloAnotacao").value = "";
+              document.querySelector("#textoAnotacao").value = "";
+              myModal.toggle();
+            }
+          }
+        }
+        botaoSalvarAnotacao.addEventListener("click", salvarAnotacao);
+
+        /* function deletarAnotacao(){
+                    var parent = this.parentNode.parentNode.parentNode;
+                    parent.remove();
+                } método menos eficiente*/
+
+        //botaoCriarAnotacao.addEventListener("click", criarAnotacao, false);
+      };
+    </script>
+  </head>
+ <header>
+      <a href="../index.html" class="logo">Estude.io</a>
+      <div class="div__nav">
+        <nav class="header__nav">
+          <ul class="nav__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="anotacoes.html" style="color: #2c7aed">Anotações</a></li>
+            <li><a href="horariosAula.html">Horários de aula</a></li>
+            <li><a href="tarefas.html">Tarefas</a></li>
+            <li><a href="livros.html">Livros para Ler</a></li>
+          </ul>
+        </nav>
+        <a href="#"
+          ><button class="btn__criar" id="botaoCriarAnotacao">
+            Criar anotação
+          </button></a
+        >
+      </div>
+    </header>
+    <div class="principal">
+      <div class="containerAnotacoes" id="containerAnotacoes"></div>
+    </div>
+    <div class="container m-5">
+      <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" style="margin-top: 0rem">Anotação</h3>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p style="margin-bottom: 0rem; font-weight: 500">
+                Titulo da Anotação
+              </p>
+              <input type="text" class="form-control" id="tituloAnotacao" />
+              <p
+                style="
+                  margin-top: 1.25rem;
+                  margin-bottom: 0rem;
+                  font-weight: 500;
+                "
+              >
+                Conteúdo da Anotação
+              </p>
+              <textarea
+                class="form-control"
+                style="min-height: 150px"
+                id="textoAnotacao"
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                id="btnDescartar"
+              >
+                Descartar
+              </button>
+              <button type="button" class="btn btn-primary" id="salvarAnotacao">
+                Salvar anotação
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
