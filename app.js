@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/sobre",indexRouter)
 
 // Sessão
 const session = require("express-session");

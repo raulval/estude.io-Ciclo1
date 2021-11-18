@@ -9,9 +9,9 @@
 }   
 body {
     margin: 0rem 9.375rem 0rem 9.375rem;
-    background-image: url("../img/background.png");
+    background-image: url("../img/background_tecnologias.png");
     background-repeat: no-repeat;
-    background-size: 65%;
+    background-size: 100%;
     padding: 0;
     font-size: 1rem;
     color:#ffffff;
@@ -153,4 +153,22 @@ header {
   margin-top: 64px;
   font-size: 32px;
   text-align: center;
+}
+.div__content {
+    margin-top: 180px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+}
+.curriculo {
+    margin-top: 32px;
+    width: 850px;
+    height: 1100px;
+}
+.div__content__sobre{
+    margin-top: 60px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
