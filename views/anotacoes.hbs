@@ -172,15 +172,25 @@
     </script>
   </head>
  <header>
-      <a href="../index.html" class="logo">Estude.io</a>
+      <a href="/" class="logo">Estude.io</a>
       <div class="div__nav">
         <nav class="header__nav">
           <ul class="nav__links">
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="anotacoes.html" style="color: #2c7aed">Anotações</a></li>
             <li><a href="horariosAula.html">Horários de aula</a></li>
             <li><a href="tarefas.html">Tarefas</a></li>
             <li><a href="livros.html">Livros para Ler</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{nome}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Mudar Nome</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <a href="#"

@@ -1,12 +1,12 @@
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
-var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const cookieParser = require("cookie-parser");
+
+var data = require("./config/data");
 
 var indexRouter = require("./routes/index");
-var loginRouter = require("./routes/login");
-var dashboardRouter = require("./routes/dashboard");
 var usersRouter = require("./routes/users");
 
 var app = express();
@@ -22,9 +22,71 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/login", loginRouter);
-app.use("/dashboard", dashboardRouter);
 app.use("/users", usersRouter);
+
+// Sessão
+const session = require("express-session");
+app.use(
+  session({
+    name: "uniqueSessionID",
+    secret: "#@A4327Asdzw",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+    },
+  })
+);
+
+// Rotas
+app.get("/login", function (req, res, next) {
+  if (req.session.isLogged) {
+    res.redirect("/dashboard/anotacoes");
+  } else {
+    res.render("login");
+  }
+});
+
+app.get("/dashboard/anotacoes", function (req, res, next) {
+  req.session.nome = data.userDB.nome;
+  if (!req.session.isLogged) {
+    res.redirect("/login");
+  } else {
+    res.render("anotacoes", { nome: req.session.nome });
+  }
+});
+
+app.get("/dashboard/horarios-de-aula", function (req, res, next) {
+  res.render("horariosdeaula");
+});
+
+app.get("/dashboard/livros", function (req, res, next) {
+  res.render("livros");
+});
+
+app.get("/dashboard/tarefas", function (req, res, next) {
+  res.render("tarefas");
+});
+
+// Fazendo Login
+app.post("/login", (req, res) => {
+  if (
+    req.body.email == data.userDB.email &&
+    req.body.senha == data.userDB.senha
+  ) {
+    req.session.nome = data.userDB.nome;
+    req.session.isLogged = true;
+    res.redirect("/dashboard/anotacoes");
+  } else {
+    res.render("login", { error: "Usuário ou senha incorretos" });
+  }
+});
+
+// Fazendo logout
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {});
+  res.redirect("/");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

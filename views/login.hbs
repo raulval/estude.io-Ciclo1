@@ -9,16 +9,20 @@
         <div class="div__titulo">
           <h2>Entrar</h2>
         </div>
+        {{#error}}<p class="alert alert-danger">{{.}}</p>{{/error}}
         <div class="div__inputs">
-          <h5>Email</h5>
-          <input type="text" class="form-control input" id="email" />
-          <h5>Senha</h5>
-          <input type="password" class="form-control input" id="senha" />
+          <form action="/login" method="post">
+            <h5>Email</h5>
+            <input type="text" class="form-control input" id="email" name="email" />
+            <h5>Senha</h5>
+            <input type="password" class="form-control input" id="senha" name="senha" />
+            <div class="esqueceu__senha">
+              <p class="esqueceu__senha">Esqueceu sua senha?</p>
+            </div>
+            <button class="main__acessar">Acessar</button>
+          </form>
         </div>
-        <div class="esqueceu__senha">
-          <p class="esqueceu__senha">Esqueceu sua senha?</p>
-        </div>
-        <a href="/dashboard/anotacoes"><button class="main__acessar">Acessar</button></a>
+        {{!-- <a href="/dashboard/anotacoes"><button class="main__acessar">Acessar</button></a> --}}
         <div class="div__social">
           <a href="#"
             ><button class="entrar__google">
