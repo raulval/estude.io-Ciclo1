@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+/* CSS de margens gerados pelo gridlover com line height 1,2 e scale factor 1,25  e adaptado por mim*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}   
+body {
+    margin: 0rem 9.375rem 0rem 9.375rem;
+    background-image: url("../img/background_contato.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+    font-size: 1rem;
+    color:#ffffff;
+    
+}
+  h1, .h1 {
+    font-size: 3rem;
+    line-height: 3.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  h2, .h2 {
+    font-size: 1.4375rem;
+    line-height: 2.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  h3, .h3 {
+    font-size: 1.1875rem;
+    line-height: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0rem;
+  }
+  h4, .h4 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0rem;
+  }
+  h5, .h5 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0rem;
+  }
+  p, ul, ol, pre, table, blockquote {
+    margin-top: 0rem;
+    margin-bottom: 1.25rem;
+  }
+  ul ul, ol ol, ul ol, ol ul {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+  
+  /* Let's make sure all's aligned */
+  hr, .hr {
+    border: 1px solid;
+    margin: -1px 0;
+  }
+  a, b, i, strong, em, small, code {
+    line-height: 0;
+  }
+  sub, sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sup {
+    top: -0.5em;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+li,a,button {
+    text-decoration: none;
+    color: #ffffff;
+}
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 30px 30px 0px;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 2rem;
+}
+.header__nav {
+    width: 100%;
+    margin-left: 18%;
+    margin-right: 4%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px 16px 0px 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.nav__links {
+    list-style: none;
+}
+.nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+.nav__links a {
+    transition: all 0.3s ease 0s;
+    color: #44494F;
+}
+.nav__links a:hover {
+    color: #2C7AED;
+}
+.logo {
+    margin-right: auto;
+    color: #ffffff;
+    font-weight: bold;
+}
+.main__acessar {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-style:none;
+    padding: 30px 50px;
+    background-color: #2C7AED;
+    border-radius: 8px;
+    
+}
+.main__acessar:hover {
+    background: linear-gradient(90deg, #2C7AED 2.3%, #4BC3CC 100%);
+}
+
+.title {
+  margin-top: 64px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.div__content {
+  margin-top: 250px;
+  margin-bottom: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+form {
+  margin-left: 25rem;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  text-align: start;
+}
+
+form label {
+  color: black;
+}
+
+.main__enviar {
+  margin-left: 19rem;
+  width: 200px;
+  height: 55px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #2C7AED;
+  border-radius: 8px;
+  transition: all 0.4s;
+}
+
+.main__enviar:hover {
+  background: linear-gradient(90deg, #2C7AED 2.3%, #4BC3CC 100%);
+}
