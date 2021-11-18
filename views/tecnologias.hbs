@@ -1,0 +1,26 @@
+<head>
+    <link rel="stylesheet" href="stylesheets/tecnologias.css">
+</head>
+
+<header>
+    <a href="#" class="logo">Estude.io</a>
+    <nav class="header__nav">
+        <ul class="nav__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">Sobre nós</a></li>
+            <li><a href="#contact">Contato</a></li>
+            <li><a href="#support">Suporte</a></li>
+            <li><a href="/tecnologias">Tecnologias</a></li>
+        </ul>
+    </nav>
+    <a href="/login"><button class="main__acessar">Acessar</button></a>
+</header>
+<div>
+    <h1 class="title">Tecnologias que serão utilizadas</h1>
+</div>
+<div class="div__content">
+    <h2 style="color: black;"><b>Utilizaremos as seguintes tecnologias para o nosso próximo ciclo:</b></h2>
+    <ul style="margin-top: 64px;">
+         {{#tecnologias}}<p style="color: black;">{{.}}</p>{{/tecnologias}}
+    </ul>
+</div>
