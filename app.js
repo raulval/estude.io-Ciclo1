@@ -25,7 +25,6 @@ app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/users", usersRouter);
-//app.use("/tecnologias",indexRouter);
 app.use("/sobre",indexRouter)
 
 // catch 404 and forward to error handler

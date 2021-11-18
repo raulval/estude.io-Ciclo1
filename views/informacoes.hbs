@@ -1,0 +1,25 @@
+<head>
+  <link rel="stylesheet" href="stylesheets/informacoes.css" />
+</head>
+
+<header>
+  <a href="#" class="logo">Estude.io</a>
+  <nav class="header__nav">
+    <ul class="nav__links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/informacoes">Mais informações</a></li>
+      <li><a href="/sobre">Sobre nós</a></li>
+      <li><a href="/tecnologias">Tecnologias</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+  </nav>
+  <a href="/login"><button class="main__acessar">Acessar</button></a>
+</header>
+<div>
+  <h1 class="title">Mais nformações sobre o projeto</h1>
+</div>
+<div class="div__content__sobre" style="margin-top: 120px;">
+ <ul style="margin-top: 64px;">
+         {{#informacoes}}<p style="color: black;">{{.}}</p>{{/informacoes}}
+ </ul>
+</div>
