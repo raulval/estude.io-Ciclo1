@@ -20,7 +20,9 @@
 </div>
 <div class="div__content">
   <h2 style="color: black;"><b>Basta preencher o formulário abaixo</b></h2>
-  <form action="https://formsubmit.co/raulvaldev1@gmail.com" method="post">
+  {{#error}}<p class="alert alert-danger">{{.}}</p>{{/error}}
+  {{#success}}<p class="alert alert-success">{{.}}</p>{{/success}}
+  <form action="/enviar-email" method="post">
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Nome</label>
       <input type="text" class="form-control" name="nome" placeholder="Seu Nome" required>
@@ -31,7 +33,7 @@
     </div>
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Assunto</label>
-      <input type="text" class="form-control" name="_subject" placeholder="Assunto" required>
+      <input type="text" class="form-control" name="assunto" placeholder="Assunto" required>
     </div>
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Digite o que está no seu coração</label>

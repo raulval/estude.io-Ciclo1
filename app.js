@@ -3,8 +3,8 @@ var express = require("express");
 var path = require("path");
 var logger = require("morgan");
 const cookieParser = require("cookie-parser");
-
-var data = require("./config/data");
+require("dotenv").config();
+const nodemailer = require("nodemailer");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -71,15 +71,57 @@ app.get("/dashboard/tarefas", function (req, res, next) {
 // Fazendo Login
 app.post("/login", (req, res) => {
   if (
-    req.body.email == data.userDB.email &&
-    req.body.senha == data.userDB.senha
+    req.body.email == process.env.USER_EMAIL &&
+    req.body.senha == process.env.USER_SENHA
   ) {
-    req.session.nome = data.userDB.nome;
+    req.session.nome = process.env.USER_NOME;
     req.session.isLogged = true;
     res.redirect("/dashboard/anotacoes");
   } else {
     res.render("login", { error: "Usuário ou senha incorretos" });
   }
+});
+
+// Enviando Email
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  auth: {
+    user: process.env.MAIL_EMAIL,
+    pass: process.env.MAIL_SENHA,
+  },
+  secure: true,
+});
+
+// Verificando conexão
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server SMTP OK");
+  }
+});
+
+app.post("/enviar-email", (req, res) => {
+  let nome = req.body.nome;
+  let email = req.body.email;
+  let assunto = req.body.assunto;
+  let mensagem = req.body.texto;
+
+  const mail = {
+    from: email,
+    to: process.env.MAIL_EMAIL,
+    subject: assunto,
+    text: `${nome} <${email}> \n${mensagem}`,
+  };
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      res.render("contato", { error: "Erro ao enviar mensagem" });
+    } else {
+      res.render("contato", { success: "Mensagem enviada com sucesso!" });
+    }
+  });
 });
 
 // Mudar Nome
