@@ -177,17 +177,17 @@
         <nav class="header__nav">
           <ul class="nav__links">
             <li><a href="/">Home</a></li>
-            <li><a href="anotacoes.html" style="color: #2c7aed">Anotações</a></li>
-            <li><a href="horariosAula.html">Horários de aula</a></li>
-            <li><a href="tarefas.html">Tarefas</a></li>
-            <li><a href="livros.html">Livros para Ler</a></li>
+            <li><a href="/dashboard/anotacoes" style="color: #2c7aed">Anotações</a></li>
+            <li><a href="/dashboard/horariosAula">Horários de aula</a></li>
+            <li><a href="/dashboard/tarefas">Tarefas</a></li>
+            <li><a href="/dashboard/livros">Livros para Ler</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{nome}}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Mudar Nome</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#nomeModal">Mudar Nome</a></li>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
               </ul>
             </li>
@@ -202,6 +202,27 @@
     </header>
     <div class="principal">
       <div class="containerAnotacoes" id="containerAnotacoes"></div>
+    </div>
+    <!-- Modal Nome -->
+    <div class="modal fade" id="nomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Mude seu nome</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/dashboard/anotacoes" method="post" id="formNome" >
+              <label for="novoNome" class="form-label" style="display: flex">Nome:</label>
+              <input type="text" id="novoNome" name="novoNome" style="padding-left: 8px" required />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" form="formNome" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container m-5">
       <div class="modal" id="myModal" tabindex="-1">

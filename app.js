@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/sobre",indexRouter)
+app.use("/sobre", indexRouter);
 
 // Sessão
 const session = require("express-session");
@@ -49,7 +49,6 @@ app.get("/login", function (req, res, next) {
 });
 
 app.get("/dashboard/anotacoes", function (req, res, next) {
-  req.session.nome = data.userDB.nome;
   if (!req.session.isLogged) {
     res.redirect("/login");
   } else {
@@ -80,6 +79,14 @@ app.post("/login", (req, res) => {
     res.redirect("/dashboard/anotacoes");
   } else {
     res.render("login", { error: "Usuário ou senha incorretos" });
+  }
+});
+
+// Mudar Nome
+app.post("/dashboard/anotacoes", (req, res) => {
+  if (req.session.nome) {
+    req.session.nome = req.body.novoNome;
+    res.redirect("/dashboard/anotacoes");
   }
 });
 
